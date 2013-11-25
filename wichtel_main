@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+# coding=utf-8
+import random
+import smtplib
+
+adressbuch={
+    "Mailadresse1",
+    "Mailadresse2",
+    "Mailadresse3"
+}
+
+def formatmailtext(schenker,beschenkter):
+	return '''Hallo {schenkerplatzhalter},
+dein Wichtel ist {beschenkterplatzhalter}! :-)
+	'''.format(schenkerplatzhalter=schenker,beschenkterplatzhalter=beschenkter)
+
+def sendmail(empfaenger,text):
+	session = smtplib.SMTP('Postausangserver')
+	session.login('XXXXX', 'XXXXXX')
+	session.sendmail('Absenderadresse', [empfaenger], text)
+	session.quit()
+
+
+namen=list(adressbuch.keys())
+random.shuffle(namen)
+
+for idx, schenker in enumerate(namen):
+	nextidx=idx+1
+	if nextidx >= len(namen):
+		nextidx=0
+	beschenkter=namen[nextidx]
+	print(schenker, adressbuch[schenker], " -> ", beschenkter, adressbuch[beschenkter])
+	mailbody=formatmailtext(schenker, beschenkter)
+	sendmail(adressbuch[schenker], mailbody)
