@@ -27,7 +27,8 @@ def sendmail(empfaenger,text):
 namen=list(adressbuch.keys())
 random.shuffle(namen)
 
-#Schenker und Beschrenkte werden festegelegt in der Variante A schenkt B, B schenkt C, usw. und der letzte in der Reihe beschenkt A
+#Schenker und Beschrenkte werden festegelegt in der Variante:
+#A schenkt B, B schenkt C, usw. und der letzte in der Reihe beschenkt A
 for idx, schenker in enumerate(namen):
 	nextidx=idx+1
 	if nextidx >= len(namen):
