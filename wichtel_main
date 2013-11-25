@@ -3,10 +3,11 @@
 import random
 import smtplib
 
+#Dictionary von Namen und zugehoerigen Mailadressen; kann unterschiedliche Anzahl von Datensaetzen enthalten
 adressbuch={
-    "Mailadresse1",
-    "Mailadresse2",
-    "Mailadresse3"
+    "Name1":"Mailadresse1",
+    "Name2":"Mailadresse2",
+    "Name3":"Mailadresse3"
 }
 
 def formatmailtext(schenker,beschenkter):
