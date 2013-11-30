@@ -2,6 +2,7 @@
 # coding=utf-8
 import random
 import smtplib
+from email.mime.text import MIMEText
 
 #Dictionary von Namen und zugehoerigen Mailadressen; kann unterschiedliche Anzahl von Datensaetzen enthalten
 adressbuch={
@@ -11,14 +12,15 @@ adressbuch={
 }
 
 #Funktion für Mailbody Text
-def formatmailtext(schenker,beschenkter):
-	return '''Subject: Wichtelmail fuer {schenkerplatzhalter}
+def formatmailtext(schenker,beschenkter,schenkermailadresse):
+	return '''To: {schenkermailadresse}
+Subject: Wichtelmail fuer {schenkerplatzhalter}
 MIME-Version: 1.0
 Content-type: text/plain; charset=iso-8859-15
 Content-Transfer-Encoding: 8bit
 Hallo {schenkerplatzhalter},
 dein Wichtel ist {beschenkterplatzhalter}! :-)
-	'''.format(schenkerplatzhalter=schenker,beschenkterplatzhalter=beschenkter)
+	'''.format(schenkerplatzhalter=schenker,beschenkterplatzhalter=beschenkter,schenkermailadresse=schenkermailadresse)
 
 #Funktion um Mail zu senden
 def sendmail(empfaenger,text):
@@ -39,5 +41,5 @@ for idx, schenker in enumerate(namen):
 		nextidx=0
 	beschenkter=namen[nextidx]
 	print(schenker, adressbuch[schenker], " -> ", beschenkter, adressbuch[beschenkter])
-	mailbody=formatmailtext(schenker, beschenkter)
+	mailbody=formatmailtext(schenker, beschenkter, adressbuch[schenker])
 	sendmail(adressbuch[schenker], mailbody)
