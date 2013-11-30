@@ -12,7 +12,11 @@ adressbuch={
 
 #Funktion für Mailbody Text
 def formatmailtext(schenker,beschenkter):
-	return '''Hallo {schenkerplatzhalter},
+	return '''Subject: Wichtelmail fuer {schenkerplatzhalter}
+MIME-Version: 1.0
+Content-type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: 8bit
+Hallo {schenkerplatzhalter},
 dein Wichtel ist {beschenkterplatzhalter}! :-)
 	'''.format(schenkerplatzhalter=schenker,beschenkterplatzhalter=beschenkter)
 
