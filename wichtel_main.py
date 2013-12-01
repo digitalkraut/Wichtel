@@ -3,6 +3,13 @@
 import random
 import smtplib
 from email.mime.text import MIMEText
+from random import seed
+from time import time
+
+#Pruefung der Zufaelligkeit
+time_seed = time()
+print('benutzter Seed:', time_seed)
+seed(time_seed)
 
 #Dictionary von Namen und zugehoerigen Mailadressen; kann unterschiedliche Anzahl von Datensaetzen enthalten
 adressbuch={
@@ -11,7 +18,7 @@ adressbuch={
     "Name3":"Mailadresse3"
 }
 
-#Funktion für Mailbody Text
+#Funktion für Betreff, Empfaengeradresse und Mailbody Text
 def formatmailtext(schenker,beschenkter,schenkermailadresse):
 	return '''To: {schenkermailadresse}
 Subject: Wichtelmail fuer {schenkerplatzhalter}
