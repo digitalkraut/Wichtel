@@ -36,8 +36,9 @@ def sendmail(empfaenger,text):
 	session.sendmail('Absenderadresse', [empfaenger], text)
 	session.quit()
 
-#Der Variablen namen Daten aus Dictionary zuweisen und diese durchmischen
+#Der Variable namen Daten aus Dictionary zuweisen und diese durchmischen
 namen=list(adressbuch.keys())
+print(namen)
 random.shuffle(namen)
 
 #Schenker und Beschrenkte werden festegelegt in der Variante:
